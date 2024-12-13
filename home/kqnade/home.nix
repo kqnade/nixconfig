@@ -73,8 +73,8 @@
   programs.zsh = {
     enable = true;
     shellAliases = {
-      ls = "eza --icons";
-      la = "eza -ila";
+      ls = "eza -lG --group-directories-first --git --icons=always";
+      la = "eza -lGa --group-directories-first --icons=always";
 
       g = "git";
 
