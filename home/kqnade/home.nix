@@ -17,89 +17,12 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./../../modules/home/kqnade/git.nix
+    ./modules/git.nix
+    ./modules/zsh.nix
+    ./modules/nixvim.nix
   ];
 
   home.sessionVariables = rec {
     GPG_KEYID = "3FB8AE32BA2DF93E54C640A0228245D67A8FDBC1";
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "kqnade";
-    userEmail = "git@k4na.de";
-
-    aliases = {
-      ci = "commit";
-      co = "checkout";
-      br = "branch";
-      st = "status";
-      last = "log -1 HEAD";
-      sub = "submodule update -- remote --merge";
-    };
-
-    signing = {
-      key = "485A496FEC9ADAF7";
-      signByDefault = true;
-    };
-
-    extraConfig = {
-      credential."https://github.com".helper = "!gh auth git-credential";
-      pull = {
-        ff = "only";
-	rebase = true;
-      };
-      init = {
-        defaultBranch = "main";
-      };
-      rebase = {
-        autoStash = true;
-	autoSquash = true;
-      };
-      url = {
-        "https*//github.com" = {
-          insteadOf = "git://github.com";
-	};
-      };
-      commit = {
-        gpgSign = true;
-      };
-      tag = {
-        gpgSign = true;
-      };
-      
-    };
-  };
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      ls = "eza -lG --group-directories-first --git --icons=always";
-      la = "eza -lGa --group-directories-first --icons=always";
-
-      g = "git";
-
-      vi = "nvim";
-      vim = "nvim";
-    };
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    zplug = {
-      enable = true;
-      plugins = [
-        { name = "zsh-users/zsh-autosuggestions"; }
-        { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
-      ];
-    };
-    initExtra = ''
-      [[ ! -f ${./../../modules/home/kqnade/p10k.zsh} ]] || source ${./../../modules/home/kqnade/p10k.zsh}
-    '';
-    
-  };
-  
-  programs.nixvim = {
-    enable = true;
-    colorschemes.catppuccin.enable = true;
-    plugins.lualine.enable = true;
   };
 }
