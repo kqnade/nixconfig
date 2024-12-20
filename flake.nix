@@ -28,6 +28,12 @@
           ./hosts/beltox-configuration.nix
         ];
       };
+      zenith = nixos.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/zenith-configuration.nix
+        ];
+      };
     };
     homeConfigurations = {
       kqnade = home-manager.lib.homeManagerConfiguration {
