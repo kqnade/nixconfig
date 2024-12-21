@@ -12,6 +12,7 @@
     eza
     bat
     fd
+    mise
   ];
 
   programs.home-manager.enable = true;
@@ -19,7 +20,7 @@
   imports = [
     ./modules/git.nix
     ./modules/zsh.nix
-    ./modules/nixvim.nix
+    ./modules/nixvim
   ];
 
   home.sessionVariables = rec {
