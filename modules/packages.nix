@@ -6,7 +6,7 @@
     git
     zsh
     gcc
-    make
+    gnumake
   ];
 
   programs.mtr.enable = true;
