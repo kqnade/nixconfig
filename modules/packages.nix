@@ -5,6 +5,7 @@
     wget
     git
     zsh
+    gcc
   ];
 
   programs.mtr.enable = true;
