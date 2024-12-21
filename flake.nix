@@ -12,9 +12,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
-  outputs = { self, nixpkgs, nixos, home-manager, nixvim}: {
+  outputs = { self, nixpkgs, nixos, home-manager, nixvim, nixos-wsl}: {
     nixosConfigurations = {
       atraqutia = nixos.lib.nixosSystem {
         system = "x86_64-linux";
@@ -31,6 +32,7 @@
       zenith = nixos.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+	  nixos-wsl.nixosModules.wsl
           ./hosts/zenith-configuration.nix
         ];
       };

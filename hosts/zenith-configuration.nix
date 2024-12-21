@@ -5,7 +5,6 @@
       ./../modules/users.nix
       ./../modules/system.nix
       ./../modules/packages.nix
-      <nixos-wsl/modules>
     ];
 
   networking.hostName = "Zenith";
